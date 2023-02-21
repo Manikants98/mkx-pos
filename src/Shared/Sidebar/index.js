@@ -2,12 +2,13 @@ import {
   ArrowBackIosTwoTone,
   ArrowForwardIosTwoTone,
 } from "@mui/icons-material";
-import { Avatar, Button, List, ListItem } from "@mui/material";
+import { Avatar, List, ListItem, Divider } from "@mui/material";
 import classNames from "classnames";
 import React, { useState } from "react";
 import { useNavigate } from "react-router";
 import { navItems } from "../../Mock";
 import Text from "../Text";
+import favicon from "../../Assets/Home/favimg.png";
 
 const Sidebar = () => {
   const [collapsed, setCollapsed] = useState(true);
@@ -22,22 +23,33 @@ const Sidebar = () => {
           : "!w-64 transition-all duration-500"
       )}
     >
-      <List className="!p-2 rounded bg-white bg-opacity-10 !z-[990] backdrop-blur !border-r-2 border-white !border-opacity-10 shadow h-full">
-        <ListItem className="!p-2 mb-4">
-          <Avatar alt="M" src="broken.jpg" />
+      <List className="!p-2 rounded !z-[990] backdrop-blur !border-2 border-white !border-opacity-5 shadow h-full">
+        <ListItem className="!p-2 mb-5 flex items-center">
+          <Avatar alt="M" src={favicon} />
           {!collapsed ? (
             <Text className="text-2xl ml-2 font-bold">MKXERP</Text>
           ) : null}
         </ListItem>
+
+        <ListItem className="!p-2 flex items-centser">
+          <Avatar alt="M" src="broken.jpg" variant="rounded" />
+          {!collapsed ? (
+            <div className="flex flex-col whitespace-nowrap">
+              <Text className="ml-2 font-semibold">Mani Kant Sharma</Text>
+              <Text className="ml-2 text-xs">Super Admin</Text>
+            </div>
+          ) : null}
+        </ListItem>
+        <Divider />
         {navItems.map((nav, index) => (
           <>
             <ListItem
               key={nav.id}
               onClick={() => navigate(nav.navLink)}
               className={classNames(
-                "bg-white bg-opacity-0 !pr-0.5 hover:!bg-opacity-5 my-1 border cursor-pointer border-white border-opacity-0 hover:border-opacity-[12%] hover:rounded p-2",
+                "!pr-0.5 my-1 border cursor-pointer whitespace-nowrap border-white border-opacity-0 hover:border-opacity-20 hover:rounded p-2",
                 window.location.pathname === nav.navLink
-                  ? "!border-opacity-[15%] hover:!bg-opacity-10 shadow rounded !bg-opacity-10 hover:!border-opacity-30"
+                  ? "!border-opacity-20 shadow rounded backdrop-blur hover:!border-opacity-30"
                   : ""
               )}
             >

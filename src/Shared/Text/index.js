@@ -1,6 +1,6 @@
 import React from "react";
 
-const Text = ({ children,className="" }) => {
+const Text = ({ children,className="text-white" }) => {
   return <p className={className}>{children}</p>;
 };
 
